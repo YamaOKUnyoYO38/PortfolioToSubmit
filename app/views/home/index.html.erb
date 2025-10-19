@@ -1,0 +1,73 @@
+<div class="welcome-container">
+  <h1 class="memolink-title">Memolink</h1>
+  
+  <h1 class="welcome-title">Welcome！</h1>
+  <h2 class="template-link"><%= link_to "テンプレート作成ページへ", new_template_path, class: "menu-link" %></h2>
+
+  <% if user_signed_in? %>
+    <div class="user-info">
+      <p>こんにちは、<%= current_user.email %> さん</p>
+      <%= link_to "テンプレート入力", new_template_path, class: "menu-link" %> |
+      <%= link_to "一覧を見る", templates_path, class: "menu-link" %> |
+      <%= button_to "ログアウト", destroy_user_session_path, method: :delete,
+        data: { turbo: false },
+    class: "menu-link",
+    form: { style: "display:inline" } %>
+    </div>
+  <% else %>
+    <div class="user-info">
+      <p>こんにちは、ゲストさん</p>
+      <%= link_to "ログイン", new_user_session_path, class: "menu-link" %> |
+      <%= link_to "新規登録", new_user_registration_path, class: "menu-link" %>
+    </div>
+  <% end %>
+</div>
+
+<style>
+/* 全体のレイアウト中央揃え */
+.welcome-container {
+  text-align: center;
+  margin-top: 80px;
+  color: #474747;
+  font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+}
+
+/* Welcome! のデザイン */
+.welcome-title {
+  font-size: 3rem;
+  margin-bottom: 60px;
+  color: #474747;
+}
+
+/* Memolinkタイトル（赤基調・優しい色） */
+.memolink-title {
+  font-size: 4rem; /* Welcome! と同じサイズ */
+  color: #e15b64; /* 優しい赤 */
+  margin-bottom: 100px;
+  font-weight: bold;
+}
+
+/* テンプレート作成ページへ */
+.template-link {
+  font-size: 1.5rem; /* Welcome! より二回り小さい */
+  color: #474747;
+  margin-bottom: 40px;
+}
+
+/* メニューリンクとユーザー情報 */
+.user-info {
+  margin-top: 40px;
+  font-size: 1.5rem;
+}
+
+.menu-link {
+  color: #474747;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-link:hover {
+  text-decoration: underline;
+  color: #e15b64;
+}
+</style>

@@ -1,0 +1,43 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
+
+    <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">ログイン</h1>
+
+    <%= form_with(model: resource, url: session_path(resource_name), local: true, html: { class: "form-container space-y-4" }) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス", class: "block mb-1 font-medium text-gray-700" %>
+        <%= f.email_field :email, autofocus: true, class: "form-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "パスワード", class: "block mb-1 font-medium text-gray-700" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-input" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "ログイン", class: "btn-login" %>
+      </div>
+    <% end %>
+
+    <!-- ゲストログインは独立フォームで中央揃え -->
+    <div class="flex justify-center mt-4">
+      <%= form_with url: users_guest_sign_in_path, method: :post, local: true, 
+      html: { class: "flex flex-col items-center w-full max-w-xs" } do |f| %>
+        <%= f.submit "ゲストでログイン", class: "btn-login w-full max-w-xs" %>
+      <% end %>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= link_to "新規登録はこちら", new_registration_path(resource_name), class: "text-blue-600 hover:underline text-sm" %>
+    </div>
+
+    <% if flash[:alert] %>
+      <p class="text-red-600 text-center font-medium"><%= flash[:alert] %></p>
+    <% end %>
+    <% if flash[:notice] %>
+      <p class="text-green-600 text-center font-medium"><%= flash[:notice] %></p>
+    <% end %>
+
+  </div>
+</div>
