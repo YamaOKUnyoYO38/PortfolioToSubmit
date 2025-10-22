@@ -1,0 +1,99 @@
+// app/assets/stylesheets/application.scss
+
+// Bootstrapをインポート
+@import "bootstrap";
+
+// 自作CSSがあればここに追記
+body {
+  padding-top: 20px;
+  background-color: #f8f9fa;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+/* ログインボタンの文字色変更 */
+#new_user #commit,
+button.btn {
+  color: #474747;
+}
+
+/* app/assets/stylesheets/application.css */
+
+/* フォーム全体のコンテナ */
+.form-container {
+  width: 300px; /* フォーム幅を統一 */
+  margin: 20px auto; /* 中央寄せ */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+/* 各入力欄グループ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* 入力欄 */
+.form-input {
+  height: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* ボタンを横並びにしたい場合 */
+.form-actions {
+  display: flex;
+  gap: 10px; /* ボタン間のスペース */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ログイン・登録ボタン */
+.btn-login {
+  color: #474747; /* 文字色 */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  min-width: 120px; /* ボタン幅を統一 */
+}
+
+/* ゲストログインボタン */
+.btn-guest {
+  background-color: #f0f0f0;
+  color: #474747; /* 白文字問題を解消 */
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.btn-guest:hover {
+  background-color: #e0e0e0;
+}
+
+tr {
+  cursor: pointer;
+}
+
+tr:hover {
+  background-color: #f8f8f8;
+}
+
+.content-cell {
+  max-width: 400px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

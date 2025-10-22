@@ -1,0 +1,92 @@
+<h1>テンプレートを新規作成</h1>
+
+<div class="form-container">
+  <% if @template.errors.any? %>
+    <div class="error-messages">
+      <h3>⚠ 入力内容にエラーがあります：</h3>
+      <ul>
+        <% @template.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @template, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :person_name, "人物の名前" %><br>
+      <%= f.text_field :person_name, class: "input-text", placeholder: "例: 佐藤花子" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :relationship, "関係" %><br>
+      <%= f.text_field :relationship, class: "input-text", placeholder: "例: 同僚・友人・家族など" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :message, "テンプレート内容" %><br>
+      <%= f.text_area :message, rows: 8, class: "input-textarea", placeholder: "ここにテンプレート本文を入力してください" %>
+    </div>
+
+    <div class="form-buttons">
+      <%= f.submit "保存する", class: "btn-primary" %>
+      <%= link_to "一覧に戻る", templates_path, class: "btn-secondary" %>
+    </div>
+  <% end %>
+</div>
+
+<style>
+.form-container {
+  max-width: 600px;
+  margin: 30px auto;
+  background: #fefefe;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.form-group {
+  margin-bottom: 18px;
+}
+.input-text, .input-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.input-textarea {
+  resize: vertical;
+}
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+.btn-secondary {
+  margin-left: 10px;
+  color: #555;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  text-decoration: underline;
+}
+.error-messages {
+  background-color: #ffe6e6;
+  border: 1px solid #ff6b6b;
+  color: #b30000;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.error-messages h3 {
+  margin-top: 0;
+  font-size: 16px;
+}
+</style>
