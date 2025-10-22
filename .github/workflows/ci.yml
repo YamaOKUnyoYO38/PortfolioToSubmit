@@ -51,6 +51,7 @@ jobs:
           bundler-cache: true
 
       - name: Lint code for consistent style
+        name: Set rubocop executable permission run: chmod +x bin/rubocop
         run: bin/rubocop -f github
 
   test:
