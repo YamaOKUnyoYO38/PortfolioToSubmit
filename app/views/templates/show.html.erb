@@ -1,0 +1,18 @@
+<h1>テンプレート詳細</h1>
+
+<p>
+  <strong>名前:</strong>
+  <%= @template.person_name %>
+</p>
+
+<p>
+  <strong>関係:</strong>
+  <%= @template.relationship %>
+</p>
+
+<p>
+  <strong>メッセージ:</strong>
+  <%= simple_format(@template.message) %>
+</p>
+
+<%= link_to "一覧に戻る", templates_path %>

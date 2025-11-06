@@ -1,0 +1,78 @@
+<h1>テンプレート一覧</h1>
+
+<div class="sort-group">
+  <%= form_with url: templates_path, method: :get, local: true do %>
+    <label>ソート:</label>
+    <%= select_tag :sort, options_for_select([
+      ["登録順", "created_at"],
+      ["人物五十音昇順", "name_asc"],
+      ["人物五十音降順", "name_desc"]
+    ], params[:sort]), onchange: "this.form.submit();" %>
+
+    <label>絞り込み:</label>
+    <%= text_field_tag :filter, params[:filter], placeholder: "人物名or関係" %>
+    <%= submit_tag "検索" %>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>宛名</th>
+      <th>関係</th>
+      <th>作成日</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @templates.each do |template| %>
+      <tr onclick="copyToClipboard(this)">
+        <td><%= template.title.presence || "（タイトルなし）" %></td>
+        <td><%= template.person_name.presence || "（未設定）" %></td>
+        <td><%= template.relationship.presence || "（未設定）" %></td>
+        <td><%= template.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <!-- このセルに必ず class="content-cell" を付ける -->
+        <td class="content-cell"><%= simple_format(template.content || template.message || "（内容なし）") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script>
+  function copyToClipboard(row) {
+    const contentCell = row.querySelector('.content-cell');
+    if (!contentCell) {
+      alert('コピーする内容が見つかりません。');
+      return;
+    }
+
+    const text = contentCell.innerText.trim();
+    navigator.clipboard.writeText(text)
+      .then(() => alert('テンプレート内容をコピーしました！'))
+      .catch(err => alert('コピーに失敗しました: ' + err));
+  }
+</script>
+
+<style>
+table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  vertical-align: top;
+}
+tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+.content-cell {
+  max-width: 400px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+</style>
