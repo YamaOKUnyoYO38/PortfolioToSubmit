@@ -80,9 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: memolink_production
-  username: memolink
-  password: <%= ENV["MEMOLINK_DATABASE_PASSWORD"] %>
   # primary: &primary_production
   #   <<: *default
   #   database: memolink_production
