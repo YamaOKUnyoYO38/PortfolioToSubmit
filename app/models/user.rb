@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-   # Devise modules...
+  # Devise modules...
   has_many :templates, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

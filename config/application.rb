@@ -16,7 +16,7 @@ module Memolink
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
-   # ===== ここから追加 =====
+    # ===== ここから追加 =====
     # Sprockets有効化（Propshaftを無効にして従来のアセットパイプラインを使う）
     config.assets.enabled = true
     config.assets.paths << Rails.root.join("app", "assets", "stylesheets")

@@ -4,8 +4,10 @@ one:
   person_name: MyString
   relationship: MyString
   message: MyText
+  user: one
 
 two:
   person_name: MyString
   relationship: MyString
   message: MyText
+  user: one
