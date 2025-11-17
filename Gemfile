@@ -66,4 +66,3 @@ gem "bootstrap", "~> 5.3.0"
 gem "sassc-rails"
 gem "devise"
 gem "redis", "~> 5.0"
-gem 'brakeman'
