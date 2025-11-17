@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   }
 
   root "home#index"  # トップページ（任意でhomeコントローラ作成）
+  mount ActionCable.server => '/cable'
 
   resources :templates, only: [:index, :new, :create, :show]
-   # ゲストログイン用ルート
+  # ゲストログイン用ルート
   devise_scope :user do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in", as: :users_guest_sign_in
   end
